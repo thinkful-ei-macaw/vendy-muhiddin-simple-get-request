@@ -2,10 +2,16 @@
 
 function getDogImage(breedName) {
   fetch(`https://dog.ceo/api/breed/${breedName}/images/random`)
-    .then(response => response.json())
+    .then(response => {
+      if(response.ok) {
+      return response.json()
+      } else {
+        throw new Error('Not found!');
+      }
+    })
     .then(responseJson => 
       displayResults(responseJson))
-    .catch(error => alert('Something went wrong. Try again later.'));
+    .catch(error => alert(error.message));
 }
 
 function displayResults(responseJson) {
