@@ -1,3 +1,4 @@
+
 function getDogImage() {
   fetch('https://dog.ceo/api/breeds/image/random')
     .then(response => response.json())
@@ -10,7 +11,7 @@ function displayResults(responseJson) {
   console.log(responseJson);
   //replace the existing image with the new one
   $('.results-img').replaceWith(
-    `<img src="${responseJson.message}" class="results-img">`
+    `<img src="${responseJson.message}" class="results-img" height="200" width="200">`
   )
   //display the results section
   $('.results').removeClass('hidden');
@@ -23,7 +24,7 @@ function watchForm() {
     //console.log(value);
     for(let i = 0; i < value; i++) {
       getDogImage();
-      displayResults();
+
     }
   });
 }
